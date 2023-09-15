@@ -1,5 +1,6 @@
 //cuando la página se cargue genere unas coordenadas aleatorias
 $(document).ready(()=>{
+    
     //guardo en una variable el elemento imagen sobre el que vamos a utilizar como tablero de juego
     var $image = $("#image");
     //creo un objeto para generar las coordenadas aleatorias sobre la imagen
@@ -19,6 +20,11 @@ $(document).ready(()=>{
             x : e.clientX,
             y : e.clientY
         };
+
+        //muevo el contenedor de la estrella para que aparezca cuando el jugador acierte
+        var $goal = $("#goal");
+        //mediante propiedades css le doy al div de la estrella las coordenadas
+        $goal.css({"top": coordClick.y , "left": coordClick.x});
 
         console.log(coordClick);
 
@@ -52,6 +58,8 @@ function getDistance (e, coordRandom){
 }
 //función para dar pistas
 function getHints (distance){
+    //guardo la imagen de la estrella en una variable
+    var $star = $("#star");
     if(distance > 500){
         return "Estás perdido XD";
     }else if (distance > 300){
@@ -65,6 +73,8 @@ function getHints (distance){
     }else if(distance > 20){
         return "Casi casi!!!";
     }else{
-        alert("¡Encontraste la estrella!");
+        //muestro la estrella cuando el jugador la encuentra
+        $star.fadeIn(3000);
+        return "¡Encontraste la estrella!";
     }
 }
