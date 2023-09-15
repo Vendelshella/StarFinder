@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuentra la estrella</title>
+    <style>
+        #game-container {
+            position: relative;
+        }
+        #star {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Encuentra la estrella: </h1>
+    <div id="game-container">
+        <img src="img/monsters.jpg" alt="Imagen" id="imagen">
+        <div id="star"><img src="img/star.png" alt=""></div>
+    </div>
+    <p>Clics: <span id="click-count">0</span></p>
+    <button id="reset-button">Reiniciar Juego</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var $star = $('#star');
+            var $clickCount = $('#click-count');
+            var $resetButton = $('#reset-button');
+            var gameContainer = document.getElementById('game-container');
+            var clickRadius = 5;
+            var clicks = 0;
+
+            function getRandomCoordinate(max) {
+                return Math.floor(Math.random() * max);
+            }
+
+            function placeStarRandomly() {
+                var maxX = gameContainer.clientWidth - $star.width();
+                var maxY = gameContainer.clientHeight - $star.height();
+                var x = getRandomCoordinate(maxX);
+                var y = getRandomCoordinate(maxY);
+                $star.css({ left: x + 'px', top: y + 'px' });
+            }
+
+            function showStar() {
+                $star.show();
+            }
+
+            function hideStar() {
+                $star.hide();
+            }
+
+            function handleClick(event) {
+                var x = event.pageX - gameContainer.offsetLeft - $star.width() / 2;
+                var y = event.pageY - gameContainer.offsetTop - $star.height() / 2;
+                var distance = Math.sqrt(x * x + y * y);
+
+                if (distance <= clickRadius) {
+                    clicks++;
+                    $clickCount.text(clicks);
+                    showStar();
+                }
+            }
+
+            $resetButton.click(function() {
+                clicks = 0;
+                $clickCount.text(clicks);
+                hideStar();
+                placeStarRandomly();
+            });
+
+            placeStarRandomly();
+            hideStar();
+            $resetButton.click();
+            $('#imagen').click(handleClick);
+        });
+    </script>
+</body>
+</html>
