@@ -9,6 +9,9 @@ $(document).ready(()=>{
     }
     console.log(coordRandom);
 
+    //contador de clics
+    var clickCount = 0;
+
     //cuando de clic en algún lugar de la imagen que me devuelva la posición
     $image.on("click", (e)=>{
         //creo un objeto para guardar coordenadas del clic sobre la imagen
@@ -29,8 +32,16 @@ $(document).ready(()=>{
         $printHint.text(hints);
 
         //hacemos un contador con la cantidad del clics del jugador
-        var clicks = $("#click-count");
-
+        clickCount++;
+        console.log(clickCount);
+        var $click = $("#click-count");
+        $click.text(clickCount);
+    });
+    
+    //cuando termina el juego lo reseteamos con el botón Reiniciar Juego
+    var reset = $("#reset-button");
+    reset.on("click", (e)=>{
+        location.reload();
     });
 });
 //función para hallar la distancia desde el clic hasta las coordenadas aleatorias mediante el teorema de Pitágoras
