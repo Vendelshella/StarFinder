@@ -3,11 +3,16 @@ $(document).ready(()=>{
     
     //guardo en una variable el elemento imagen sobre el que vamos a utilizar como tablero de juego
     var $image = $("#image");
+
+    const imgSizeX = 400;
+    const imgSizeY = 400;
+
     //creo un objeto para generar las coordenadas aleatorias sobre la imagen
     var coordRandom ={
-        x : Math.floor(Math.random() * $image.width()),
-        y : Math.floor(Math.random() * $image.height())
+        x : Math.floor(Math.random() * imgSizeX),
+        y : Math.floor(Math.random() * imgSizeY)
     }
+
     console.log(coordRandom);
 
     //contador de clics
@@ -24,7 +29,7 @@ $(document).ready(()=>{
         //muevo el contenedor de la estrella para que aparezca cuando el jugador acierte
         var $goal = $("#goal");
         //mediante propiedades css le doy al div de la estrella las coordenadas
-        $goal.css({"top": coordClick.y , "left": coordClick.x});
+        $goal.css({"top": (coordClick.y-70) , "left": (coordClick.x-15)});
 
         console.log(coordClick);
 

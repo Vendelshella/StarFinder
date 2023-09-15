@@ -10,7 +10,7 @@ body{
 }
 h1{
     font-size: 30px;
-    margin: 15px 0px 20px 60px;
+    margin: 10px 0px 15px 60px;
 }
 #game-container{
     position: relative;
@@ -22,7 +22,6 @@ h1{
     margin: 0;
     padding: 0;
     border: none;
-    width: 100%;
     height: auto;
 }
 #goal{
@@ -33,4 +32,20 @@ h1{
 #star{
     width: 20px;
     display: none;
+}
+#info-container{
+    display: flex;
+    margin-left: 40px;
+}
+#click-count{
+margin-right: 40px;
+}
+button{
+    background-color: rgb(163, 144, 119);
+    border: none;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+#print-hint{
+    margin-left: 30px;
 }
