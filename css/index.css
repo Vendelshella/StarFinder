@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    background-color:rgb(80, 70, 18);
+    color:rgb(126, 197, 241);
+}
+h1{
+    font-size: 30px;
+    margin: 15px 0px 20px 75px;
+}
+#image{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 10px !important;
+}
+#star{
+    position: absolute;
+    width: 20px;
+    display: none;
+}
