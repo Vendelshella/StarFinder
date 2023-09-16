@@ -14,7 +14,7 @@ h1{
 }
 #game-container{
     position: relative;
-    margin: 0 10px !important;
+    margin: 0 10px;
 }
 #image{
     width: 400px;
@@ -48,4 +48,15 @@ button{
 }
 #print-hint{
     margin-left: 30px;
+}
+@media screen and (max-width: 400px) {
+    h1{
+        font-size: 30px;
+        margin: 10px 0px 15px 50px;
+    }
+    #game-container{
+        position: relative;
+        margin: 0;
+        width: 100%;
+    }
 }
